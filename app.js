@@ -19,6 +19,7 @@ app.use('/', (req, res, next) => {
 */
 
 app.get('/', db.show)
+app.delete('/:id', db.destroy)
 
 
 app.use(notFoundMiddleware);
