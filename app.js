@@ -1,7 +1,8 @@
 const cors = require('cors');
 const express = require('express')
 const app = express()
-const postController = require('./controllers/posts.js')
+
+const db = require('./data/db.js')
 const notFoundMiddleware = require('./middlewares/notFoundMiddleware.js')
 const loggerMiddleware = require('./middlewares/loggerMiddleware.js')
 const PORT = 3000
@@ -17,11 +18,8 @@ app.use('/', (req, res, next) => {
   });
 */
 
-app.get('/', postController.show)
-app.get('/:id', postController.showone)
-app.post('/', postController.store)
-app.put('/:id', postController.update)
-app.delete('/:id', postController.destroy)
+app.get('/', db.show)
+
 
 app.use(notFoundMiddleware);
 
